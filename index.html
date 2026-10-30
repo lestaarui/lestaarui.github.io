@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ajeng Dwi Lestari — Portfolio</title>
+<meta name="description" content="Personal portfolio of Ajeng Dwi Lestari, Informatics Engineering Student and Aspiring Web Developer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!--
+=====================================================================
+ HOW TO CUSTOMIZE
+ 1. TEXT: search for square brackets, e.g. Ajeng Dwi Lestari, [NIM],
+    [University]. Replace each one with your own details.
+ 2. COLORS: edit the CSS variables in :root (just below).
+ 3. LINKS: update the href values for GitHub, LinkedIn, Email and CV
+    (search for "LINK:"). Put your cv.pdf next to this file.
+ 4. PHOTO: replace the placeholder inside .photo with
+    <img src="photo.jpg" alt="Portrait of Ajeng Dwi Lestari">.
+ 5. LISTS: copy any <li class="row"> or <article class="tl-item">
+    block to add more skills, tools, achievements, or timeline items.
+=====================================================================
+-->
+<style>
+/* ---------- Design tokens (edit colors here) ---------- */
+:root{
+  --sage-1:#8a9a7b; --sage-2:#6f7f62;   /* light mood gradient */
+  --charcoal:#1c1f20;                    /* dark mood */
+  --text:#eae8e1;                        /* off-white */
+  --muted:rgba(234,232,225,.68);
+  --accent:#e0c9a6;                      /* warm sand/gold */
+  --line:rgba(234,232,225,.16);          /* hairlines */
+  --radius:14px;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:var(--sans);color:var(--text);background:var(--charcoal);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none;margin:0;padding:0}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#1c1f20;padding:8px 14px;border-radius:999px;z-index:100;font-weight:700}
+.skip:focus{left:12px}
+
+/* ---------- Section moods + film grain ---------- */
+.section{position:relative;padding:clamp(80px,12vw,150px) clamp(20px,6vw,80px);isolation:isolate}
+.section::before{ /* grain overlay (inline SVG noise) */
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.light{background:linear-gradient(160deg,var(--sage-1),var(--sage-2))}
+.dark{background:var(--charcoal)}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* ---------- Typography ---------- */
+.label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.light .label{color:#f1e3c8}
+.title{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(3rem,8vw,5.5rem);line-height:1;letter-spacing:-.01em}
+.muted{color:var(--muted)}
+
+/* ---------- Fixed UI ---------- */
+.brand{position:fixed;top:18px;left:clamp(16px,3vw,32px);z-index:50;font-family:var(--serif);font-style:italic;font-size:1.35rem}
+.pills{position:fixed;top:14px;right:clamp(16px,3vw,32px);z-index:50;display:flex;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(28,31,32,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);transition:background .2s,color .2s,border-color .2s}
+.pill:hover{background:var(--accent);color:#1c1f20;border-color:var(--accent)}
+.pill svg{width:14px;height:14px;fill:currentColor}
+.progress{position:fixed;left:0;bottom:0;height:3px;width:100%;z-index:60;background:var(--accent);transform:scaleX(0);transform-origin:left}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;width:100%}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(3.4rem,10vw,7.5rem);line-height:.95;letter-spacing:-.02em;margin:18px 0 22px}
+.hero .tagline{font-size:clamp(1rem,2vw,1.2rem);max-width:30ch;color:rgba(234,232,225,.85)}
+.photo{width:min(100%,340px);aspect-ratio:1;border-radius:24px;justify-self:center;border:1px solid rgba(234,232,225,.3);
+  background:rgba(28,31,32,.18);display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);font-size:.85rem;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo svg{width:56px;height:56px;stroke:currentColor;fill:none;stroke-width:1.2;margin-bottom:10px}
+.scroll-hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);transition:opacity .4s}
+.scroll-hint.gone{opacity:0;pointer-events:none}
+
+/* ---------- About ---------- */
+.about .wrap,.split{display:grid;grid-template-columns:minmax(160px,1fr) 2.4fr;gap:clamp(28px,6vw,80px)}
+.about p.intro{font-size:1.1rem;max-width:56ch;margin-bottom:28px}
+.facts{border-top:1px solid var(--line);margin-bottom:56px}
+.facts div{display:flex;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.facts dt{width:150px;flex:none}
+.facts dd{margin:0;font-weight:700}
+dl{margin:0}
+.group-title{font-weight:800;font-size:1.3rem;margin:0 0 24px}
+.timeline{position:relative;margin:0 0 56px;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--accent)}
+.tl-item{position:relative;padding-bottom:30px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-30px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(224,201,166,.2)}
+.tl-item h4{margin:4px 0 0;font-size:1.1rem;font-weight:800}
+.tl-item .sub{font-size:.9rem;color:var(--muted)}
+.tl-item ul{margin-top:10px}
+.tl-item li{font-size:.95rem;color:rgba(234,232,225,.88);padding-left:22px;position:relative;margin-bottom:4px}
+.tl-item li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+
+/* ---------- Dark list panels ---------- */
+.panel{margin-bottom:clamp(60px,9vw,110px)}
+.panel:last-child{margin-bottom:0}
+.panel .num{display:block;margin-bottom:10px}
+.panel h2{font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1}
+.panel .subtitle{margin:8px 0 28px;color:var(--muted)}
+.rows{border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 4px;border-bottom:1px solid var(--line);color:rgba(234,232,225,.8);transition:color .2s,transform .2s}
+.row:hover{color:#fff;transform:translateX(8px)}
+.row .name{font-weight:700;font-size:1.05rem}
+.tag{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent);border:1px solid rgba(224,201,166,.4);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.ach{align-items:flex-start}
+.ach .main{flex:1}
+.ach .desc{font-size:.92rem;color:var(--muted);margin-top:4px;max-width:58ch;font-weight:400}
+.ach .meta{text-align:right;flex:none}
+.ach .meta .label{display:block}
+.ach .meta .org{font-size:.85rem;color:var(--muted)}
+
+/* ---------- Contact ---------- */
+.contact .lead{font-size:1.1rem;margin:16px 0 40px;color:rgba(234,232,225,.85)}
+.links{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:720px}
+.link{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius);transition:border-color .2s,background .2s,transform .2s}
+.link:hover{border-color:var(--accent);background:rgba(224,201,166,.07);transform:translateY(-2px)}
+.link svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.link .t{display:block;font-weight:800}
+.link .u{display:block;font-size:.85rem;color:var(--muted);word-break:break-all}
+footer{margin-top:90px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+/* ---------- Reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .photo{order:-1;justify-self:start;width:180px;margin-top:60px}
+  .about .wrap{grid-template-columns:1fr}
+  .facts div{flex-direction:column;gap:2px}
+  .facts dt{width:auto}
+  .links{grid-template-columns:1fr}
+  .ach{flex-direction:column;gap:10px}
+  .ach .meta{text-align:left;display:flex;gap:12px;align-items:baseline}
+}
+@media(max-width:420px){.pill span{display:none}.pill{padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .row,.link,.pill{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<!-- Fixed UI -->
+<a class="brand" href="#top" aria-label="Back to top">Ajeng Dwi Lestari</a>
+<div class="pills">
+  <!-- LINK: GitHub -->
+  <a class="pill" href="https://github.com/lestaarui" target="_blank" rel="noopener" aria-label="GitHub profile">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
+  <!-- LINK: CV -->
+  <a class="pill" href="cv.pdf" download>CV</a>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<main id="top">
+
+<!-- 0. HERO -->
+<header class="section light hero">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="label">Portfolio 2026</p>
+      <h1>Ajeng Dwi Lestari</h1>
+      <p class="tagline">Informatics Engineering Student · Aspiring Web Developer</p>
+    </div>
+    <!-- Replace this placeholder with: <img src="photo.jpg" alt="Portrait of Ajeng Dwi Lestari"> -->
+<div class="photo reveal">
+  <img src="photo.jpg" alt="Foto Ajeng Dwi Lestari">
+</div>
+  </div>
+  <p class="label scroll-hint" id="hint">Keep scrolling</p>
+</header>
+
+<!-- 1. ABOUT -->
+<section class="section light about" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <h2 class="title reveal" id="about-title">About</h2>
+    <div>
+      <p class="intro reveal">Hi, I'm Ajeng Dwi Lestari, a first-year Informatics Engineering student who enjoys turning ideas into clean, useful websites. I like learning in public, working in small teams, and polishing the details. Right now I'm looking for internships in web development.</p>
+
+      <dl class="facts reveal">
+        <div><dt class="label">Name</dt><dd>Ajeng Dwi Lestari</dd></div>
+        <div><dt class="label">NIM</dt><dd>26051204116</dd></div>
+        <div><dt class="label">Degree Program</dt><dd>Bachelor of Informatics Engineering</dd></div>
+      </dl>
+
+      <h3 class="group-title reveal">Education</h3>
+      <div class="timeline">
+        <article class="tl-item reveal">
+          <p class="label">2026 – Present</p>
+          <h4>State University of Surabaya</h4>
+          <p class="sub">Bachelor of Informatics Engineering</p>
+        </article>
+        <article class="tl-item reveal">
+          <p class="label">2023 – 2026</p>
+          <h4>SMAN 1 Sutojayan</h4>
+          <p class="sub">Science Track</p>
+        </article>
+        <article class="tl-item reveal">
+          <p class="label">2020 – 2023</p>
+          <h4>SMPN 1 Sutojayan
+          </h4>
+          <p class="sub">Junior High School</p>
+        </article>
+      </div>
+
+      <h3 class="group-title reveal">Activity</h3>
+      <div class="timeline">
+        <article class="tl-item reveal">
+          <p class="label">2023 – 2024</p>
+          <h4>PASKIBRA Member</h4>
+          <p class="sub">Special Forces Flag-Raising Unit</p>
+          <ul>
+            <li>Demonstrate discipline, punctuality, and commitment during regular training sessions.</li>
+            <li>Contribute to the successful execution of the flag-raising ceremony through coordinated teamwork.</li>
+            <li>Develop leadership potential, communication skills, and the ability to work effectively under pressure.</li>
+            <li>Maintain professionalism, responsibility, and a strong sense of teamwork in carrying out assigned tasks.</li>
+          </ul>
+        </article>
+        <article class="tl-item reveal">
+          <p class="label">2020 - 2024</p>
+          <h4>Journalist Member</h4>
+          <p class="sub">Documentation Coordinator</p>
+          <ul>
+            <li>Develop writing, reporting, and information-gathering skills.</li>
+            <li>Improve photography, documentation, and content creation skills.</li>
+            <li>Collaborate with team members to cover school events and activities.</li>
+            <li>Strengthen communication skills, creativity, and attention to detail.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. WHAT I CAN DO -->
+<section class="section dark" id="skills" aria-labelledby="skills-title">
+  <div class="wrap">
+    <h2 class="title reveal" id="skills-title" style="margin-bottom:clamp(48px,7vw,90px)">What I Can Do</h2>
+
+    <div class="panel reveal">
+      <span class="label num">01</span>
+      <h3 style="font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1">Skill</h3>
+      <p class="subtitle">What I'm comfortable building and working with.</p>
+      <ul class="rows">
+        <li class="row"><span class="name">Office Applications</span><span class="tag">Computer</span></li>
+        <li class="row"><span class="name">Photo Documentation</span><span class="tag">Media</span></li>
+        <li class="row"><span class="name">Content Writing</span><span class="tag">Writing</span></li>
+        <li class="row"><span class="name">Information Gathering</span><span class="tag">Writing</span></li>
+        <li class="row"><span class="name">Visual Communication</span><span class="tag">Design</span></li>
+        <li class="row"><span class="name">Team Collaboration</span><span class="tag">Soft Skill</span></li>
+        <li class="row"><span class="name">Problem Solving</span><span class="tag">Soft Skill</span></li>
+        <li class="row"><span class="name">Creativity &amp; Innovation</span><span class="tag">Soft Skill</span></li>
+      </ul>
+    </div>
+
+    <div class="panel reveal">
+      <span class="label num">02</span>
+      <h3 style="font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1">Tools</h3>
+      <p class="subtitle">The tools I reach for every day.</p>
+      <ul class="rows">
+        <li class="row"><span class="name">Microsoft Word</span><span class="tag">Computer</span></li>
+        <li class="row"><span class="name">Microsoft Excel</span><span class="tag">Computer</span></li>
+        <li class="row"><span class="name">Canva</span><span class="tag">Design</span></li>
+        <li class="row"><span class="name">IbisPaintX</span><span class="tag">Design</span></li>
+        <li class="row"><span class="name">Snapseed</span><span class="tag">Media</span></li>
+        <li class="row"><span class="name">Notion</span><span class="tag">Collaboration</span></li>
+        <li class="row"><span class="name">Pinterest</span><span class="tag">Innovation</span></li>
+        <li class="row"><span class="name">ChatGPT</span><span class="tag">Creativity</span></li>
+        <li class="row"><span class="name">Claude</span><span class="tag">Creativity</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ACHIEVEMENT (reverse chronological) -->
+<section class="section dark" id="achievement" aria-labelledby="ach-title">
+  <div class="wrap">
+    <h2 class="title reveal" id="ach-title" style="margin-bottom:clamp(40px,6vw,70px)">Achievement</h2>
+    <ul class="rows reveal">
+      <li class="row ach">
+        <div class="main"><span class="name">Special Forces Flag-Raising Unit — Subdistrict</span><p class="desc">Selected as a member of the District-Level Flag-Raising Troop (Paskibra Kecamatan) for the Indonesian Independence Day Ceremony on August 17, 2024, demonstrating discipline, responsibility, teamwork, and dedication.</p></div>
+        <div class="meta"><span class="label">2024</span><span class="org">Sutojayan Subdistrict</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. CONTACT -->
+<section class="section dark contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 class="title reveal" id="contact-title">Contact</h2>
+    <p class="lead reveal">Let's connect and build something together.</p>
+    <div class="links reveal">
+      <!-- LINK: Email -->
+      <a class="link" href="mailto:ajeng.dlest@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span><span class="t">Email</span><span class="u">ajeng.dlest@gmail.com</span></span>
+      </a>
+      <!-- LINK: GitHub -->
+      <a class="link" href="https://github.com/lestaarui" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 4.5v-3.5c0-1 .1-1.5-.5-2 2.800-.3 5.500-1.400 5.500-6a4.600 4.600 0 0 0-1.300-3.200 4.200 4.200 0 0 0-.1-3.200s-1.100-.3-3.500 1.300a12 12 0 0 0-6.200 0C6.500 2.800 5.400 3.100 5.400 3.100a4.200 4.200 0 0 0-.1 3.200A4.600 4.600 0 0 0 4 9.500c0 4.600 2.700 5.700 5.500 6-.6.600-.6 1.200-.5 2V21"/></svg>
+        <span><span class="t">GitHub</span><span class="u">github.com/lestaarui</span></span>
+      </a>
+      <!-- LINK: LinkedIn -->
+      <a class="link" href="https://linkedin.com/in/ajenglestaari" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <span><span class="t">LinkedIn</span><span class="u">linkedin.com/in/ajenglestaari</span></span>
+      </a>
+      <!-- LINK: CV (place cv.pdf next to this file) -->
+      <a class="link" href="cv.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16"/></svg>
+        <span><span class="t">CV</span><span class="u">Download cv.pdf</span></span>
+      </a>
+    </div>
+    <footer>© 2026 Ajeng Dwi Lestari</footer>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* Scroll progress bar + "Keep scrolling" hint */
+(function(){
+  var bar=document.getElementById('progress'), hint=document.getElementById('hint'), ticking=false;
+  function update(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    bar.style.transform='scaleX('+(max>0?Math.min(h.scrollTop/max,1):0)+')';
+    hint.classList.toggle('gone',h.scrollTop>40);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
+  window.addEventListener('resize',update); update();
+})();
+
+/* Fade-up reveal on scroll (skipped when reduced motion is preferred) */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>
